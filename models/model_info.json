@@ -1,0 +1,14 @@
+{
+  "trained_on": "2026-10-25",
+  "n_messages": 82459,
+  "sources": [
+    "CEAS_08",
+    "Enron",
+    "Ling",
+    "Nazario",
+    "Nigerian_Fraud",
+    "SpamAssassin"
+  ],
+  "cross_source_accuracy_avg": 0.878,
+  "random_split_accuracy": 0.988
+}

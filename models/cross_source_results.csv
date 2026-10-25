@@ -1,0 +1,7 @@
+held_out,messages,phishing_share,accuracy,phishing_caught,legit_passed
+CEAS_08,39138,0.558,0.9439,0.9895,0.8864
+Enron,29765,0.469,0.8369,0.8502,0.8252
+Ling,2858,0.16,0.9594,0.8862,0.9733
+Nazario,1565,1.0,0.6134,0.6134,
+Nigerian_Fraud,3331,1.0,0.9943,0.9943,
+SpamAssassin,5802,0.295,0.9245,0.9562,0.9113

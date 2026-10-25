@@ -1,0 +1,8 @@
+.venv/
+archive/
+data/
+code/
+__pycache__/
+.pytest_cache/
+*.pyc
+models/baseline.joblib
