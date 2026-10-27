@@ -18,3 +18,6 @@ The raw data is not included in this repo. Download it from Kaggle and place the
 ## Limitations
 Nazario-style phishing is missed about 4 times in 10. About 17% of unseen business mail is wrongly flagged.
 Most sources label spam as phishing, and the data is mostly older.
+
+## Interface
+Animated neon theme with a cinematic title intro, built in Streamlit with CSS animations. Live app: https://poojith-phishing-detector-1.streamlit.app

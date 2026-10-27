@@ -1,4 +1,4 @@
-﻿import json
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -9,6 +9,12 @@ from predictor import MODEL_PATH, predict
 ROOT = Path(__file__).resolve().parent.parent
 
 st.set_page_config(page_title="Phishing Detector", layout="wide")
+
+from intro import show_intro
+from theme import apply_theme
+
+apply_theme()
+show_intro()
 st.title("Phishing Detector")
 st.caption("TF-IDF + logistic regression, tested on sources it never saw during training.")
 
