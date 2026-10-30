@@ -29,7 +29,10 @@ with tab_check:
     choice = st.selectbox("Load an example", list(examples))
     text = st.text_area("Paste an email or SMS", value=examples[choice], height=200)
     threshold = st.slider("Phishing threshold", 0.05, 0.95, 0.50, 0.05)
-    if st.button("Analyse", type="primary") and text.strip():
+    go = st.button("Analyse", type="primary") and bool(text.strip())
+    if go and len(text.split()) < 8:
+           st.warning("Not enough text to give a reliable verdict. Paste at least 8 words.")
+    elif go:
         r = predict(text, threshold)
         c1, c2, c3 = st.columns(3)
         c1.metric("Verdict", r["label"].upper())
@@ -67,4 +70,6 @@ with tab_limits:
 - Most sources label spam as phishing, so the model partly learned spam versus normal mail.
 - The data is mostly older. Modern phishing wording is not covered.
 - Hand-built style features were tested and did not help.
+- Very short messages (under 8 words) are not judged. The model was trained on full emails.
 """)
+    
