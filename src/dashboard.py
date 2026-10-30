@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-
+from emailfile import read_email_file
 from predictor import MODEL_PATH, predict
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -23,12 +23,18 @@ tab_check, tab_results, tab_limits = st.tabs(["Check a message", "Evaluation res
 with tab_check:
     examples = {
         "(write your own)": "",
-        "Account scare": "URGENT: Your bank account will be suspended within 24 hours. Verify your password now at http://192.168.4.7/login to avoid closure.",
-        "Normal work mail": "Hi team, attached is the agenda for Thursday meeting. Please add your items before noon. Thanks, Priya",
+        "Account scare": "URGENT: Your bank account will be suspended unless you verify immediately.",
+        "Normal work mail": "Hi team, attached is the agenda for Thursday."
     }
+
     choice = st.selectbox("Load an example", list(examples))
-    text = st.text_area("Paste an email or SMS", value=examples[choice], height=200)
-    threshold = st.slider("Phishing threshold", 0.05, 0.95, 0.50, 0.05)
+    uploaded = st.file_uploader("Or upload an email file (.txt or .eml)", type=["txt", "eml"])
+
+    file_text = read_email_file(uploaded.getvalue(), uploaded.name) if uploaded else ""
+
+    text = st.text_area("Paste an email or SMS", value=file_text)
+
+    threshold = st.slider("Phishing threshold", 0.05, 0.95, 0.5, 0.05)
     go = st.button("Analyse", type="primary") and bool(text.strip())
     if go and len(text.split()) < 8:
            st.warning("Not enough text to give a reliable verdict. Paste at least 8 words.")
